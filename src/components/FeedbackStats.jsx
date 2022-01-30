@@ -1,7 +1,9 @@
-import PropTypes from 'prop-types'
 
-const FeedbackStats = ({feedback}) => {
+import FeedbackContext from '../context/FeedbackContext'
 
+import { useContext } from 'react'
+const FeedbackStats = () => {
+  const {feedback} = useContext(FeedbackContext)
 
  const average = (feedback.reduce((a,c)=> a + c.rating, 0) / feedback.length).toFixed(1).replace(/[.,]0$/g, '')
 
@@ -20,8 +22,5 @@ const FeedbackStats = ({feedback}) => {
   ) 
 };
 
-FeedbackStats.propTypes = {
-    feedback: PropTypes.array.isRequired,
-}
 
 export default FeedbackStats;
